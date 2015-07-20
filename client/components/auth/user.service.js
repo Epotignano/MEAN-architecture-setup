@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('musicFirstApp')
+angular.module('musicFirstApplicationCloud')
   .factory('User', function ($resource) {
     return $resource('/api/users/:id/:controller', {
       id: '@_id'

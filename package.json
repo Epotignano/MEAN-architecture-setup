@@ -1,5 +1,5 @@
 {
-  "name": "music-first",
+  "name": "music-first-application-cloud",
   "version": "0.0.0",
   "main": "server/app.js",
   "dependencies": {

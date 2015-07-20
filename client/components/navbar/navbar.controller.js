@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('musicFirstApp')
+angular.module('musicFirstApplicationCloud')
   .controller('NavbarCtrl', function ($scope, $location, Auth) {
     $scope.menu = [{
       'title': 'Home',

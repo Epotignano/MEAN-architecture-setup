@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('musicFirstApp')
+angular.module('musicFirstApplicationCloud')
   .config(function ($stateProvider) {
     $stateProvider
       .state('main', {

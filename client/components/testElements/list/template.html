@@ -1,0 +1,19 @@
+<h3>The list</h3>
+  <table class="table table-bordered table-responsive table-hover table-striped" id="testElementsList">
+    <thead>
+      <th>Title</th>
+      <th>Description</th>
+    </thead>
+    <tbody>
+      <tr ng-repeat="element in list.elements">
+        <td>
+          {{element.title}}
+        </td>
+        <td>
+          {{element.description}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('musicFirstApp')
+angular.module('musicFirstApplicationCloud')
   .controller('MainCtrl', function ($scope, $http) {
     $scope.awesomeThings = [];
 

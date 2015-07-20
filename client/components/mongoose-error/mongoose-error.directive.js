@@ -3,7 +3,7 @@
 /**
  * Removes server error when user updates input
  */
-angular.module('musicFirstApp')
+angular.module('musicFirstApplicationCloud')
   .directive('mongooseError', function () {
     return {
       restrict: 'A',
