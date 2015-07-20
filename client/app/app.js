@@ -13,8 +13,6 @@ angular
 
     //third party libraries
     'ui.router',
-    'formly',
-    'formlyBootstrap',
 
     //our modules
     'testElements',

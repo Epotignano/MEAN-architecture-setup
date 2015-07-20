@@ -13,6 +13,7 @@
         ctrl.onSuccess();
       })
     }
+
   };
 
 
@@ -52,7 +53,7 @@
   };
 
 
-angular.module('ui.elements.element.creation', [])
+angular.module('ui.elements.element.creation', ['formly', 'formlyBootstrap'])
   .service('elementFormService', elementFormService)
   .controller('elementsCreationCtrl', elementsCreationCtrl)
   .directive('elementsCreation', function(){

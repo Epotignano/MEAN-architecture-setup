@@ -17,26 +17,35 @@ module.exports = function(config) {
       'bower_components/angular-resource/angular-resource.js',
       'bower_components/angular-cookies/angular-cookies.js',
       'bower_components/angular-sanitize/angular-sanitize.js',
-      'bower_components/angular-route/angular-route.js',
+      'bower_components/angular-formly/dist/formly.js',
+      'bower_components/angular-formly-templates-bootstrap/dist/angular-formly-templates-bootstrap.js',
       'bower_components/lodash/dist/lodash.compat.js',
       'bower_components/angular-ui-router/release/angular-ui-router.js',
 
+
+      //app modules
+
+      'app/app.js',
+
+      'app/modules/**/**/*.js',
+      'app/modules/**/*.js',
+
       //components JS files
-      'app/ui-components/**/*.js',
-      'app/ui-components/**/**/*.js',
-      'app/ui-components/**/**/**/*.js',
+      'components/**/**/**/*.js',
 
       // components HTML files
-      'app/ui-components/**/**/**/*.html',
-      'app/ui-components/**/**/*.html',
-      'app/ui-components/**/*.html',
-      'app/ui-components/*.html'
+      'components/**/**/**/*.html',
+      'components/**/**/*.html',
+      'components/**/*.html',
+      'components/*.html'
 
     ],
 
     preprocessors: {
       '**/*.html': 'html2js'
     },
+
+    reporters: ['story'],
 
     ngHtml2JsPreprocessor: {
       stripPrefix: 'client/',
