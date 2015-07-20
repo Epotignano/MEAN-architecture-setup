@@ -22,7 +22,7 @@ angular
     'ui.elements.list',
     'ui.elements.element.creation'
   ])
-.constant('serviceUrl', 'http://localhost:9000')
+.constant('serviceUrl', 'http://localhost:9000/')
 .config(function($urlRouterProvider, $locationProvider) {
 
     $urlRouterProvider.otherwise('/');

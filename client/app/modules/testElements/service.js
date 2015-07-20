@@ -5,7 +5,7 @@
 var elementsService = function($http, $q, serviceUrl) {
 
   var service = this;
-  var _elementsUrl = serviceUrl + '/test';
+  var _elementsUrl = serviceUrl + 'test';
 
   var _observers = [];
 
