@@ -4,8 +4,8 @@
 
 //Require the view components
 
-var ElementsListComponent = require('../../ui-components/testElements/list.js');
-var ElementCreationComponent = require('../../ui-components/testElements/creation.js');
+var ElementsListComponent = require('../../components/testElements/list.js');
+var ElementCreationComponent = require('../../components/testElements/creation.js');
 
 //Test
 

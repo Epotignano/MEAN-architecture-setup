@@ -3,7 +3,7 @@
  */
 
 
-  var elementsCreationCtrl = function(elementsService, elementFormService) {
+  var elementsCreationCtrl = function(elementFormService) {
 
     var ctrl = this;
     ctrl.fields = elementFormService.getFields();
