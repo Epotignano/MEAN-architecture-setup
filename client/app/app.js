@@ -23,7 +23,7 @@ angular
     'ui.elements.element.creation',
     'ui.search.box'
   ])
-
+.constant('serviceUrl', window.location.origin + '/')
 .config(function($urlRouterProvider, $locationProvider) {
 
     $urlRouterProvider.otherwise('/search');

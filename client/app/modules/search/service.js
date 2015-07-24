@@ -2,9 +2,9 @@
  * Created by emiliano on 23/07/15.
  */
 
-var searchService = function($http,$q) {
+var searchService = function($http,$q,  serviceUrl) {
 
-  var searchBaseUrl = '/api/search';
+  var searchBaseUrl = serviceUrl + 'api/search';
 
   var service = this;
 

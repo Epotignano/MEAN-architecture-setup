@@ -16,10 +16,10 @@ var qs = function(obj, prefix){
   return str.join("&");
 }
 
-var suggestionsService = function($http, $q) {
+var suggestionsService = function($http, $q, serviceUrl) {
 
   var service = this;
-  var _suggestionsUrl = '/api/suggestionss';
+  var _suggestionsUrl = serviceUrl + 'api/suggestionss';
 
   var _observers = [];
 
