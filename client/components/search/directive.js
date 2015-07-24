@@ -2,37 +2,46 @@
  * Created by emiliano on 23/07/15.
  */
 
-var searchBoxCtrl = ['suggestionsService', '$element','$window', function(suggestionsService, $element, $window) {
+var searchBoxCtrl = ['suggestionsService', 'searchService', function(suggestionsService, searchService) {
 
   var search = this;
 
   search.options = [];
-  var elementScope = $element.isolateScope();
 
-  elementScope.$watch('search.terms', function(newVal, oldVal) {
-
-    if(newVal && newVal.length) {
-      search.getSuggestions(newVal, function(results) {
-        search.options = results;
-      })
-    }
-
-  });
-
-  search.getSuggestions = function(keyword, cb) {
+  search.getSuggestions = function() {
     var _query = {
       yahoo : search.yahoo,
       userSugg : search.userSuggestions,
-      keyword: keyword
+      keyword: search.terms
     };
 
+    console.log(search.terms);
 
-    suggestionsService.getSuggestions(_query, cb)
-      .then(function(results) {
-        console.log(results);
-        cb(results);
+    if(search.terms) {
+      suggestionsService.getSuggestions(_query)
+        .then(function(results) {
+          search.options = results;
+        })
+      ;
+    }
+
+  };
+
+  search.getResults = function() {
+    searchService.search(search.terms)
+      .then(function() {
+
       })
-    ;
+  };
+
+  search.searchBySuggestion = function(suggestion) {
+    search.terms = suggestion;
+    search.getResults()
+      .then(function(results) {
+
+
+
+      })
   }
 
 }];

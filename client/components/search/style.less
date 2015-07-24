@@ -1,0 +1,29 @@
+/**
+ * Created by emiliano on 24/07/15.
+ */
+
+@import "../../bower_components/bootstrap/less/variables.less";
+
+.results-element(@padding, @elemColor, @elemBg) {
+  color : @elemColor;
+  background: @elemBg;
+  padding : @padding;
+}
+
+.results-element:hover {
+    background: @table-bg-hover;
+}
+
+.results-list {
+  list-style-type: none;
+  padding: 1%;
+  border: solid 1px @gray-lighter;
+  li {
+    z-index: @zindex-dropdown;
+    .results-element(2%,
+      @gray-dark,
+      @dropdown-bg
+    );
+
+  }
+}

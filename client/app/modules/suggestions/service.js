@@ -2,6 +2,7 @@
  * Created by emiliano on 14/07/15.
  */
 
+//TODO Refactor to a service
 var qs = function(obj, prefix){
   var str = [];
   for (var p in obj) {
@@ -14,7 +15,8 @@ var qs = function(obj, prefix){
   console.log(str.join("&"));
 
   return str.join("&");
-}
+};
+
 
 var suggestionsService = function($http, $q, serviceUrl) {
 
