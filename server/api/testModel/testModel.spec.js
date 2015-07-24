@@ -15,7 +15,7 @@ describe("testModel REST API", function() {
         superagent.post(testModelBaseUrl)
             .send({
                 "title":"Emiliano test",
-                "description" : "Something awesome"
+                "description": "Hola"
             })
             .end(function(error, res) {
                 assert.equal(res.body.message, 'saved');

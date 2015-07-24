@@ -16,8 +16,8 @@ describe("Test Elements View", function() {
   it("Should create a new element and show it in the list", function(done) {
 
     var testData = {
-      title: "Test Title",
-      description: "Test description"
+      title: "Mira Matii",
+      description: "Me creo un robot"
     };
 
     browser.wait(function() {

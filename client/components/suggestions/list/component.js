@@ -2,7 +2,7 @@
  * Created by emiliano on 15/07/15.
  */
 
-var testElementsListCtrl = function($element, elementsService) {
+var testElementsListCtrl = ['$element','elementsService', function($element, elementsService) {
   var ctrl = this;
 
   var listScope = $element.scope();
@@ -13,12 +13,12 @@ var testElementsListCtrl = function($element, elementsService) {
     ctrl.elements.push(data);
   })
 
-};
+}];
 
 
 angular.module('ui.elements.list', [])
 .controller('testElementsListCtrl', testElementsListCtrl)
-.directive('testElementsList', function(){
+.directive('testElementsList',function(){
   return {
     scope: {
       elements : '='

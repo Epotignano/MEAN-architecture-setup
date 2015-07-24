@@ -10,18 +10,21 @@
  */
 angular
   .module('musicFirstApplicationCloud', [
-
     //third party libraries
-    'ui.router',
 
+    //third party components
+
+    'nya.bootstrap.select',
     //our modules
-    'testElements',
+    'suggestionsModule',
+    'search',
     //our components
     'ui.elements.list',
-    'ui.elements.element.creation'
+    'ui.elements.element.creation',
+    'ui.search.box'
   ])
 .constant('serviceUrl', 'http://localhost:9000/')
 .config(function($urlRouterProvider, $locationProvider) {
 
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/search');
   });

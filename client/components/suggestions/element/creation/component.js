@@ -66,7 +66,7 @@ angular.module('ui.elements.element.creation', ['formly', 'formlyBootstrap'])
       }, // {} = isolate, true = child, false/undefined = no change
       controller: 'elementsCreationCtrl as elementCreation',
       restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
-      templateUrl: 'components/testElements/element/creation/template.html',
+      templateUrl: 'components/suggestions/element/creation/template.html',
       bindToController : true
     };
   });

@@ -2,7 +2,7 @@
  * Created by emiliano on 14/07/15.
  */
 
-  var elementsListCtrl = function(elementsList, elementsService) {
+  var elementsListCtrl = ['suggestionsList', 'suggestionsService', function(elementsList, suggestionsService) {
 
     var ctrl = this;
 
@@ -20,7 +20,7 @@
   ctrl.elementsCreationFn = elementsService.creation;
 
 
-  };
+  }];
 
-angular.module('testElements', ['ui.router'])
+angular.module('suggestionsModule', ['ui.router'])
   .controller("elementsListCtrl", elementsListCtrl);

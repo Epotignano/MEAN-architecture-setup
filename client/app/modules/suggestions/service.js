@@ -2,17 +2,31 @@
  * Created by emiliano on 14/07/15.
  */
 
-var elementsService = function($http, $q, serviceUrl) {
+var qs = function(obj, prefix){
+  var str = [];
+  for (var p in obj) {
+    var k = prefix ? prefix + "[" + p + "]" : p,
+      v = obj[k];
+    str.push(angular.isObject(v) ? qs(v, k) : (k) + "=" + encodeURIComponent(v));
+  }
+
+
+  console.log(str.join("&"));
+
+  return str.join("&");
+}
+
+var suggestionsService = function($http, $q, serviceUrl) {
 
   var service = this;
-  var _elementsUrl = serviceUrl + 'test';
+  var _suggestionsUrl = serviceUrl + 'api/suggestionss';
 
   var _observers = [];
 
   service.getList = function() {
     var getListPromise = $q.defer();
 
-    $http.get(_elementsUrl)
+    $http.get(_suggestionsUrl)
       .then(function(list) {
         getListPromise.resolve(list.data);
       })
@@ -22,7 +36,7 @@ var elementsService = function($http, $q, serviceUrl) {
 
   service.creation = function(entity) {
     var createElemPromise = $q.defer();
-    $http.post(_elementsUrl, entity)
+    $http.post(_suggestionsUrl, entity)
       .then(function(response) {
         if(response.status == 200) {
             entity._id = response.data._id;
@@ -48,12 +62,21 @@ var elementsService = function($http, $q, serviceUrl) {
     }
   };
 
-  service.getList();
+  service.getSuggestions = function(query) {
+    var getSuggPromise = $q.defer();
+
+    $http.get(_suggestionsUrl+ '?' + qs(query))
+      .then(function(results) {
+        getSuggPromise.resolve(results.data)
+      });
+
+    return getSuggPromise.promise;
+  };
 
 };
 
 
 
 
-angular.module('testElements')
-  .service('elementsService', elementsService);
+angular.module('suggestionsModule')
+  .service('suggestionsService', suggestionsService);
