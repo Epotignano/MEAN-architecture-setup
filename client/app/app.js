@@ -23,7 +23,7 @@ angular
     'ui.elements.element.creation',
     'ui.search.box'
   ])
-.constant('serviceUrl', 'http://localhost:9000/')
+
 .config(function($urlRouterProvider, $locationProvider) {
 
     $urlRouterProvider.otherwise('/search');
