@@ -1,31 +1,34 @@
-<div class="input-group inner-addon left-addon">
-  <input type="text" id="search-box"
-         class="form-control search-box" ng-model="search.terms" ng-change="search.getSuggestions()"
-         ng-model-options="{debounce: {default: 300 } }"
-         placeholder="キーワードを入力"
-    >
+<form ng-submit="search.getResults(search.terms)" name="searchFormYahoo">
+  <div class="input-group inner-addon left-addon">
+    <input type="text" id="search-box"
+           class="form-control search-box" ng-model="search.terms" ng-change="search.getSuggestions()"
+           ng-model-options="{debounce: {default: 300 } }"
+           placeholder="キーワードを入力"
+      >
       <span class="input-group-btn">
-        <button class="btn btn-primary" type="button" ng-click="search.getResults(search.terms)"> &nbsp;検索</button>
+        <button class="btn btn-primary" type="submit"> &nbsp;検索</button>
       </span>
-</div>
-<div>
-  <div class="row" ng-hide="search.searchingSugg">
-    <suggestions-list list="search.options" selected-suggestion="search.selectedSuggestion"></suggestions-list>
   </div>
-  <div class="row" ng-show="search.searchingSugg">
-    <div class="col-md-10 col-md-offset-1 alert alert-info">
-      <h3><i class="fa fa-spin fa-refresh"></i> ローディング</h3>
+  <div>
+    <div class="row" ng-hide="search.searchingSugg">
+      <suggestions-list list="search.options" selected-suggestion="search.selectedSuggestion"></suggestions-list>
+    </div>
+    <div class="row" ng-show="search.searchingSugg">
+      <div class="col-md-10 col-md-offset-1">
+        <h3><i class="fa fa-spin fa-refresh"></i></h3>
+      </div>
     </div>
   </div>
-</div>
+</form>
+
 
 <div>
   <div class="row" ng-hide="search.searchingResults">
     <search-results list="search.response"></search-results>
   </div>
   <div class="row" ng-show="search.searchingResults">
-    <div class="col-md-10 col-md-offset-1 alert alert-info">
-      <h3><i class="fa fa-spin fa-refresh"></i> ローディング</h3>
+    <div class="col-md-10 col-md-offset-1">
+      <h3><i class="fa fa-spin fa-refresh"></i></h3>
     </div>
   </div>
 </div>
