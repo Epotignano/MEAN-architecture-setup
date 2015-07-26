@@ -27,3 +27,25 @@
 
   }
 }
+
+/* enable absolute positioning */
+.inner-addon {
+  position: relative;
+}
+
+/* style icon */
+.inner-addon .feedback {
+  position: absolute;
+  padding: 10px;
+  pointer-events: none;
+  color: black;
+  z-index:1000;
+}
+
+/* align icon */
+.left-addon .feedback  { left:  0px;}
+.right-addon .feedback { right: 0px;}
+
+/* add padding  */
+.left-addon input  { padding-left:  30px; }
+.right-addon input { padding-right: 30px; }

@@ -1,0 +1,18 @@
+<div class="row" ng-show="results.list">
+  <div class="row">
+    <div class="col-md-12">
+      <h3>約{{ results.list.totalresults }}件</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <ul>
+        <search-result-card  element="result" ng-repeat="result in results.list.results">
+        </search-result-card>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+

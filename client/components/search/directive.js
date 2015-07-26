@@ -6,11 +6,14 @@ var searchBoxCtrl = [
   'suggestionsService',
   'searchService',
   '$document',
-  function(suggestionsService, searchService, $document) {
+  '$element',
+  function(suggestionsService, searchService, $document, $element) {
 
   var search = this;
 
   search.options = [];
+
+  var elmScope = $element.isolateScope();
 
   search.getSuggestions = function() {
     var _query = {
@@ -22,11 +25,16 @@ var searchBoxCtrl = [
     console.log(search.terms);
 
     if(search.terms) {
+      search.searchingSugg = true;
+      search.searchingSuggPromise =
       suggestionsService.getSuggestions(_query)
         .then(function(results) {
           search.options = results;
+          search.searchingSugg = false;
         })
       ;
+    } else {
+      search.options = [];
     }
 
   };
@@ -35,13 +43,26 @@ var searchBoxCtrl = [
     if( event.target.className.match('search-box')) {
       search.getSuggestions();
     }
-  })
+  });
 
-  search.getResults = function() {
-    searchService.search(search.terms)
-      .then(function() {
+    elmScope.$watch('search.selectedSuggestion', function(value) {
+      console.log(value);
+      if(value) {
+        search.terms = value;
+        search.getResults(value);
+      }
+    });
 
-      })
+
+  search.getResults = function(terms) {
+    search.searchingResults = true;
+    if(terms) {
+      searchService.search(terms)
+        .then(function(response) {
+          search.response = response.data;
+          search.searchingResults = false;
+        })
+    }
   };
 
 }];
@@ -60,12 +81,9 @@ var suggestionsListCtrl = [
     var elmScope = $element.scope();
 
     suggestions.searchBySuggestion = function(suggestion) {
-      console.log(suggestion);
-
       suggestions.selectedSuggestion = suggestion.key;
     };
 
-    console.log($element);
 
     $document.bind('click', function(event) {
       if( !event.target.className.match('search-box') && suggestions.list && suggestions.list.length) {
@@ -73,7 +91,7 @@ var suggestionsListCtrl = [
         suggestions.hide = true;
         elmScope.$apply();
       }
-    })
+    });
 
     $document.bind('click', function(event) {
       console.log(event);
@@ -81,18 +99,25 @@ var suggestionsListCtrl = [
         suggestions.hide = false;
         elmScope.$apply();
       }
-    })
-
-
-
-
+    });
 
 }];
 
 
-angular.module('ui.search.box', [])
+var searchResultsCtrl = function() {
+  var results = this;
+};
+
+
+var searchResultCardCtrl = function() {
+  var card = this;
+};
+
+angular.module('ui.search.box', ['ngSanitize'])
   .controller('searchBoxCtrl', searchBoxCtrl)
   .controller('suggestionsListCtrl', suggestionsListCtrl)
+  .controller('searchResultsCtrl', searchResultsCtrl)
+  .controller('searchResultCardCtrl', searchResultCardCtrl)
    .directive('searchBox', ['searchService', function(searchService){
      // Runs during compile
      return {
@@ -108,7 +133,7 @@ angular.module('ui.search.box', [])
      };
    }])
 
-  .directive('suggestionsList', ['searchService', function(){
+  .directive('suggestionsList', ['searchService', function(searchService){
     // Runs during compile
     return {
       scope: {
@@ -120,6 +145,35 @@ angular.module('ui.search.box', [])
       templateUrl: 'components/search/suggestions-list.html',
       bindToController : true
     };
-  }]);
+  }])
+
+.directive('searchResults', ['searchService', function(searchService){
+  // Runs during compile
+  return {
+    scope: {
+      list : '='
+    },
+    controller: 'searchResultsCtrl as results',
+    restrict: 'EA', // E = Element, A = Attribute, C = Class, M = Comment
+    templateUrl: 'components/search/searchResults.html',
+    bindToController : true
+  };
+}])
+
+.directive('searchResultCard', ['searchService', function(searchService){
+  // Runs during compile
+  return {
+    scope: {
+      element : '='
+    },
+    controller: 'searchResultCardCtrl as card',
+    restrict: 'EA', // E = Element, A = Attribute, C = Class, M = Comment
+    templateUrl: 'components/search/resultCard.html',
+    bindToController : true
+  };
+}]);
+
+
+;
 
 

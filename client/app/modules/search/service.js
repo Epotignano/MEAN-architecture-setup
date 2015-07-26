@@ -21,15 +21,18 @@ var qs = function(obj, prefix){
 
 var searchService = function($http,$q,  serviceUrl) {
 
-  var searchBaseUrl = serviceUrl + 'api/search';
+  var searchBaseUrl = serviceUrl + 'api/search/';
 
   var service = this;
 
   service.search = function(params) {
 
+    var query = {
+      q: params
+    };
     var searchPromise = $q.defer();
 
-    $http.get(searchBaseUrl + qs(params))
+    $http.get(searchBaseUrl +'?'+ qs(query))
       .then(function(response) {
         searchPromise.resolve(response);
       });

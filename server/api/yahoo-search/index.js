@@ -5,6 +5,6 @@ var controller = require('./yahoo-search.controller');
 
 var router = express.Router();
 
-router.post('/', controller.search);
+router.get('/', controller.search);
 
 module.exports = router;
