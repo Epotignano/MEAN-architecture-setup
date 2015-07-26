@@ -1,11 +1,7 @@
 <div class="input-group">
-  <input type="text" class="form-control" ng-model="search.terms" ng-change="search.getSuggestions()" ng-model-options="{debounce: {default: 300 } }" placeholder="キーワードを入力">
+  <input type="text" id="search-box" class="form-control search-box" ng-model="search.terms" ng-change="search.getSuggestions()" ng-model-options="{debounce: {default: 300 } }" placeholder="キーワードを入力">
       <span class="input-group-btn">
         <button class="btn btn-primary" type="button">&nbsp;検索</button>
       </span>
 </div>
-<ul class="results-list" ng-show="search.terms && search.options && search.options.length && !search.hide" ng-blur="search.hide = true" ng-focus="search.hide = false;">
-  <li class="results-element" ng-repeat="option in search.options" ng-click="search.searchBySuggestion(option.key)">
-      <i class="fa fa-search"></i> {{option.key}}
-  </li>
-</ul>
+<suggestions-list list="search.options" selected-suggestion="search.terms"></suggestions-list>

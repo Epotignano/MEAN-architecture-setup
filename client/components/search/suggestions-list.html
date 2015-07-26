@@ -1,0 +1,5 @@
+<ul class="results-list" ng-show="!suggestions.hide && suggestions.list && suggestions.list.length">
+  <li class="results-element" ng-repeat="suggestion in suggestions.list" ng-click="suggestions.searchBySuggestion(suggestion)">
+    <i class="fa fa-search"></i> {{suggestion.key}}
+  </li>
+</ul>
