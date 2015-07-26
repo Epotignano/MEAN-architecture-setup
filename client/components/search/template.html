@@ -10,10 +10,10 @@
       </span>
   </div>
   <div>
-    <div class="row" ng-hide="search.searchingSugg">
+    <div class="row" ng-hide="search.searchingSugg && !search.searchingResults">
       <suggestions-list list="search.options" selected-suggestion="search.selectedSuggestion"></suggestions-list>
     </div>
-    <div class="row" ng-show="search.searchingSugg">
+    <div class="row" ng-show="search.searchingSugg && !search.searchingResults">
       <div class="col-md-10 col-md-offset-1">
         <h3><i class="fa fa-spin fa-refresh"></i></h3>
       </div>

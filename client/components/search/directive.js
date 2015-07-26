@@ -24,13 +24,16 @@ var searchBoxCtrl = [
 
     console.log(search.terms);
 
-    if(search.terms) {
+    if(search.terms && !search.searchingResults) {
       search.searchingSugg = true;
       search.searchingSuggPromise =
       suggestionsService.getSuggestions(_query)
         .then(function(results) {
-          search.options = results;
-          search.searchingSugg = false;
+          if(!search.searchingResults) {
+            search.options = results;
+          }
+          search.searchingSugg = false
+          ;
         })
       ;
     } else {
