@@ -68,7 +68,7 @@ var suggestionsListCtrl = [
     console.log($element);
 
     $document.bind('click', function(event) {
-      if( (!event.target.className.match('results-list') || !event.target.className.match('search-box') ) && suggestions.list && suggestions.list.length) {
+      if( !event.target.className.match('search-box') && suggestions.list && suggestions.list.length) {
         suggestions.list = [];
         suggestions.hide = true;
         elmScope.$apply();
@@ -76,6 +76,7 @@ var suggestionsListCtrl = [
     })
 
     $document.bind('click', function(event) {
+      console.log(event);
       if( !event.target.className.match('search-box')) {
         suggestions.hide = false;
         elmScope.$apply();
